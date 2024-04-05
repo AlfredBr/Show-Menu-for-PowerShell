@@ -2,6 +2,8 @@
 
 `Show-Menu` is a PowerShell Cmdlet designed to enhance user interaction within scripts by displaying a customizable interactive menu in the console. Users can navigate through the menu using the arrow keys and select an option by pressing Enter. This Cmdlet aims to simplify script options selection, making scripts more user-friendly and accessible.
 
+![screenshot](https://github.com/AlfredBr/Show-Menu-for-PowerShell/blob/dev/image.png)
+
 ## Features
 
 - **Customizable Prompt:** Display a custom message above the menu to guide users.
