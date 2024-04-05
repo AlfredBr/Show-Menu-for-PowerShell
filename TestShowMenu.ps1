@@ -48,9 +48,11 @@ if ($choice) {
 }
 
 $yesNo = @(@{Name="Yes"}, @{Name="No"})
-$choice = Show-Menu -Prompt "Did you like this little cmdlet?" -MenuItems $yesNo
-if ($yesNo[$choice].Name -eq "Yes") {
-	Show-Boxed -Contents @("❤️", "Thank you!") -LineColor Red
+$choice = Show-Menu -Prompt "Did you like this little cmdlet?" -MenuItems $yesNo -ForegroundColor Blue
+if ($choice) {
+	if ($yesNo[$choice].Name -eq "Yes") {
+		Show-Boxed -Contents @("❤️", "Thank you!") -LineColor Red
+	}
 }
 
 Show-Boxed -Contents @("Foo", "Bar", "Baz")
