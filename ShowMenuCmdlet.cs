@@ -24,6 +24,7 @@ public class ShowMenuCmdlet : Cmdlet
 {
     [Parameter(Mandatory = false)] public string Prompt { get; set; } = default!;
     [Parameter(Mandatory = false)] public MenuItem[] MenuItems { get; set; } = default!;
+	[Parameter(Mandatory = false)] public ConsoleColor ForegroundColor { get; set; } = ConsoleColor.White;
 
     protected override void ProcessRecord()
     {
@@ -49,10 +50,13 @@ public class ShowMenuCmdlet : Cmdlet
         {
             Prompt = "Select an option:";
         }
-        Console.ForegroundColor = ConsoleColor.White;
+
+        Console.ForegroundColor = ForegroundColor;
 
         Console.WriteLine();
         Console.WriteLine(Prompt);
+
+		Console.ForegroundColor = ConsoleColor.White;
 
         foreach (var item in MenuItems)
         {
