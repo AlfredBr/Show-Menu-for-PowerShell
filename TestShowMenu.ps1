@@ -1,6 +1,6 @@
 Write-Host "PowerShell" $psVersionTable.PSVersion -ForegroundColor Green
 
-Import-Module "C:\Users\alfre\source\repos\Show-Menu\bin\Debug\net8.0\Show-Menu.dll"
+Import-Module ".\bin\Debug\net8.0\Show-Menu.dll"
 
 $MenuItems = @(
 	@{
@@ -47,6 +47,13 @@ if ($choice) {
 	Write-Host "You chose: $choice"
 }
 
-Show-Boxed -Contents "This is a test #1"
-Show-Boxed -Contents @("❤️", "This is a test #2") -LineColor Green
+$yesNo = @(@{Name="Yes"}, @{Name="No"})
+$choice = Show-Menu -Prompt "Did you like this little cmdlet?" -MenuItems $yesNo
+if ($yesNo[$choice].Name -eq "Yes") {
+	Show-Boxed -Contents @("❤️", "Thank you!") -LineColor Red
+}
+
 Show-Boxed -Contents @("Foo", "Bar", "Baz")
+
+Show-Boxed -Contents "https://github.com/AlfredBr/Show-Menu-for-PowerShell" -LineColor Blue
+

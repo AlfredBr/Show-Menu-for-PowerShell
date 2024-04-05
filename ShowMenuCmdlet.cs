@@ -51,6 +51,7 @@ public class ShowMenuCmdlet : Cmdlet
         }
         Console.ForegroundColor = ConsoleColor.White;
 
+        Console.WriteLine();
         Console.WriteLine(Prompt);
 
         foreach (var item in MenuItems)
