@@ -1,38 +1,57 @@
 Write-Host "PowerShell" $psVersionTable.PSVersion -ForegroundColor Green
 
-Import-Module ".\bin\Debug\net8.0\Show-Menu.dll"
-
-$MenuItems = @(
+$menuItems = @(
 	@{
 		Name = "Option 1"
-		Value = 420
+		Value = 0x01
 	},
 	@{
 		Name = "Option 2"
-		Value = 6+9
+		Value = "two"
 	},
 	@{
 		Name = "Option 3"
-		Value = "seggs"
+		Value = 3
 	}
 )
 
-$choice = Show-Menu -Prompt "Pick one:" -MenuItems $menuItems
+$foodMenuItems = @(
+	@{
+		Name = "Pizza 🍕"
+	},
+	@{
+		Name = "Burger 🍔"
+	},
+	@{
+		Name = "Hotdog 🌭"
+	},
+	@{
+		Name = "Fries 🍟"
+	},
+	@{
+		Name = "Drink 🥤"
+	},
+	@{
+		Name = "Ice cream 🍦"
+	}
+)
+
+$choice = Show-Menu -MenuItems $menuItems -Prompt "Pick one:"
 if ($choice) {
 	Write-Host "You chose: $choice"
 }
 
-$choice = Show-Menu -MenuItems $menuItems
+$choice = Show-Menu -MenuItems $foodMenuItems -MultiSelect -Prompt "Pick one or more:"
 if ($choice) {
 	Write-Host "You chose: $choice"
 }
 
-$choice = Show-Menu -Prompt "Empty list:" -MenuItems @()
+$choice = Show-Menu -MenuItems @() -Prompt "Empty list:"
 if ($choice) {
 	Write-Host "You chose: $choice"
 }
 
-$choice = Show-Menu -Prompt "Fuzzy list:" -MenuItems @(@{Name="Foo"}, @{Name="Bar"; Value=69},@{Name="Baz"})
+$choice = Show-Menu -MenuItems @(@{Name="Foo"}, @{Name="Bar"; Value=69},@{Name="Baz"}) -Prompt "Fuzzy list:"
 if ($choice) {
 	Write-Host "You chose: $choice"
 }
@@ -51,11 +70,6 @@ $yesNo = @(@{Name="Yes"}, @{Name="No"})
 $choice = Show-Menu -Prompt "Did you like this little cmdlet?" -MenuItems $yesNo -ForegroundColor Blue
 if ($choice) {
 	if ($yesNo[$choice].Name -eq "Yes") {
-		Show-Boxed -Contents @("❤️", "Thank you!") -LineColor Red
+		Show-Boxed -Contents @("Thank you!", "https://github.com/AlfredBr/Show-Menu-for-PowerShell") -LineColor Red
 	}
 }
-
-Show-Boxed -Contents @("Foo", "Bar", "Baz")
-
-Show-Boxed -Contents "https://github.com/AlfredBr/Show-Menu-for-PowerShell" -LineColor Blue
-
