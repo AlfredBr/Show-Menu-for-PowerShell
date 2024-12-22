@@ -29,7 +29,7 @@ public class ShowMenuCmdlet : Cmdlet
 	[Parameter(Mandatory = false)] public string Prompt { get; set; } = default!;
 	[Parameter(Mandatory = false)] public MenuItem[] MenuItems { get; set; } = default!;
 	[Parameter(Mandatory = false)] public ConsoleColor ForegroundColor { get; set; } = ConsoleColor.White;
-	[Parameter(Mandatory = false)] public SwitchParameter MultiSelect { get; set; }
+	[Parameter(Mandatory = false)] public SwitchParameter MultiSelect {	get; set; }
 
 	protected override void ProcessRecord()
 	{
@@ -142,6 +142,10 @@ public class ShowMenuCmdlet : Cmdlet
 							SetMenuIndicatorToPosition(p);
 						}
 						break;
+					case ConsoleKey.Escape:
+						return "[Escape]";
+					case ConsoleKey.Q:
+						return "[Quit]";
 					default:
 						// do nothing on other keys (for now)
 						break;
