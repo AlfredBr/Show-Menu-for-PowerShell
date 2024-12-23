@@ -19,9 +19,14 @@ public class MenuItem
 }
 
 /// <summary>
-/// Displays an interactive menu in the console.
-/// <para type="description">This cmdlet displays a customizable interactive menu in the console. Users can select an option using arrow keys.</para>
+/// <para type="synopsis">Displays an interactive menu in the console.</para>
+/// <para type="description">This cmdlet shows a menu of choices in the console, allowing the user to select items with arrow keys.</para>
+/// <para type="parameter" name="Prompt">The prompt text displayed before presenting menu items.</para>
+/// <para type="parameter" name="MenuItems">Specifies the menu items to display.</para>
+/// <para type="parameter" name="ForegroundColor">Specifies the color of the menu text.</para>
+/// <para type="parameter" name="MultiSelect">Enables multiple selections using the Spacebar.</para>
 /// <para type="example">PS&gt; Show-Menu -Prompt "Choose an option:" -MenuItems @($item1, $item2)</para>
+/// <para type="example">PS&gt; Show-Menu -Prompt "Pick any:" -MenuItems @($item1, $item2) -MultiSelect</para>
 /// </summary>
 [Cmdlet(VerbsCommon.Show, "Menu")]
 public class ShowMenuCmdlet : Cmdlet
